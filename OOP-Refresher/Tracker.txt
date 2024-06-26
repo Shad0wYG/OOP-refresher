@@ -1,0 +1,17 @@
+
+Structura materiei 
+
+1x    Utilizare mediu de lucru, compilare, depanare, corectie erori de compilare, identificare si corectie bug-uri
+2x    Recapitulare pointeri, masive unidimensionale (vectori si siruri de caractere)
+3x    Recapitulare transfer parametri catre functii. Transfer parametri prin valoare sau prin adresa. Pointer vs Referinta C++
+4    Clase, specificatori de acces, incapsulare, atribute, metode, atribute statice, atribute constante
+5    Constructori, Destructor;
+6    Constructor copiere, supraincarcare operator =;
+7    Supraincarcare operatori (<<, >>, +, -, *, /, ++, --);
+8    Supraincarcare operatori (+=, [], ( ), !, ->, new, delete, cast);
+9    Derivare/Mosternire
+10   Functii virtuale, supradefinire, mostenire multipla
+11   Clase abstracte, interfete, mecanismul try-catch, domenii de nume;
+12   Operatii I/O orientate pe stream-uri
+13   Clase template, concept, implementare, specializare
+14   STL (Standard Template Library), containere, iteratori si algoritmi,RTTI (Run Time Type Identification

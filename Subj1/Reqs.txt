@@ -1,0 +1,18 @@
+(3p) Define classes that allow the management of data related to a weather condition (date, temperature, description, location, etc.),
+using members of public, private, protected, const, static type. The class contains at least one dynamically allocated field 
+(like recorded temperatures array), constructors, 2 accessor methods (set will validate the received value) for an attribute of your choice
+and the class destructor.
+
+(1p) Overload the ++ operator with the postfix form that allows you to change the schedule by delaying it by one hour
+
+(1p) Exemplify  the overloading concept for the previously defined set method. 
+
+(1p) Using the previous class,exemplify the three different situations in which the copy constructor is called.
+
+(2p) To exemplify the use of a “has a” type 1: M relation (one to several) by defining an additional class to manage the weather 
+conditions for a region with multiple locations. You can use a STL collection but it is not mandatory.
+
+(1p) Overload an operator of your choice to add new weather conditions data for the region.
+
+(1p) Explain how virtualization works. You can use the debugger for that.
+
