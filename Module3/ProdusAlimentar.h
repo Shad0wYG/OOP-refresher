@@ -20,10 +20,10 @@ private:
 
 public:
 
-	ProdusAlimentar() {
+	/*ProdusAlimentar() {
 		char denum[] = "denumire1";
 		this->denumire = denum;
-	}
+	}*/
 
 
 #pragma region Getters
@@ -44,11 +44,66 @@ public:
 
 	}
 
-	//??
 	char* getCategorie() {
-		return this->categorie;
+		char* ret = new char[101];
+		strcpy(ret, this->categorie);
+		return ret;
+	}
+
+	int* getStocuri() {
+		int* ret = new int[50];
+		memcpy(ret, this->stocuriMagazine, sizeof(int) * 50);
+		return ret;
+	}
+
+	int getMagazine() {
+		return this->nrMagazine;
+	}
+
+	int* getVanzariPeZile() {
+		int* ret = new int[this->nrZile];
+		for (int i = 0; i < this->nrZile; i++) {
+			ret[i] = this->vanzariPeZile[i];
+		}
+		return ret;
+	}
+
+	int getZile() {
+		return this->nrZile;
 	}
 
 #pragma endregion
+
+
+#pragma region Setters
+	void setPret(float num) {
+		if (num > 0) this->pret = num;
+	}
+	void setGreutate(int weight) {
+		if (weight > 0) this->greutate = weight;
+	}
+	void setDenumire(char* name) {
+
+	}
+	void setCategorie(char* cat) {
+
+	}
+	void setStocuriMagazine(int num) {
+
+	}
+	void setNrMagazine(int nr) {
+		if (nr > 0) this->nrMagazine = nr;
+	}
+	void setVanzariPeZile(int nrDays, int* vect) {
+
+	}
+	void setNrZile(int nrD) {
+		if (nrD > 1) this->nrZile = nrD;
+	}
+
+
+
+#pragma endregion
+
 
 };

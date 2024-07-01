@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="Course7Fixed.txt" />
     <Text Include="Tracker.txt" />
   </ItemGroup>
   <ItemGroup>

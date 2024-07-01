@@ -18,6 +18,9 @@
     <Text Include="Tracker.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="Course7Fixed.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TestingZone.cpp">

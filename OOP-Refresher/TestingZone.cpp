@@ -2,157 +2,120 @@
 #include <string>
 using namespace std;
 
-class Student {
-	const int id;
-	char* name;
-	static int NO_STUDENTS;
+enum class State { WAITING_PICKUP, IN_TRANSIT, DEPOSIT, DELIVERED };
+
+class Util {
 public:
-	Student(int id, const char* name) : id(id) {
-		this->name = new char[strlen(name) + 1];
-		strcpy_s(this->name, strlen(name) + 1, name);
-		Student::NO_STUDENTS += 1;
+	static char* copyArray(const char* source) {
+		char* copy = new char[strlen(source) + 1];
+		strcpy_s(copy, strlen(source) + 1, source);
+		return copy;
 	}
 
-	string getName() {
-		return string(this->name);
+	static string stateToString(State state) {
+		switch (state) {
+		case State::WAITING_PICKUP:
+			return "Waiting for pick up";
+		case State::DEPOSIT:
+			return "In desposit";
+		case State::IN_TRANSIT:
+			return "In transit";
+		case State::DELIVERED:
+			return "Delivered";
+		default:
+			throw exception("Type not covered");
+		}
+
+	}
+};
+
+class Box {
+	char* AWB = nullptr;
+	float weight = 0;
+	State state = State::WAITING_PICKUP;
+public:
+	void setAWB(string awb) {
+		if (!awb.empty()) delete[] this->AWB;
+		this->AWB = Util::copyArray(awb.c_str());
+	}
+	string getAWB() {
+		if (this->AWB != nullptr)
+			return string(this->AWB);
+		else return "";
+	}
+	void setState(State state) {
+		this->state = state;
+	}
+	void pickUp() {
+		this->state = State::IN_TRANSIT;
+	}
+	void store() {
+		this->state = State::DEPOSIT;
+	}
+	State getState() {
+		return this->state;
 	}
 
-	void setName(string name) {
-		this->name = new char[name.size() + 1];
-		strcpy_s(this->name, name.size() + 1, name.c_str());
+	Box(string AWB, float weight) : weight(weight) {
+		this->setAWB(AWB);
 	}
-
-	~Student() {
+	~Box() {
 		cout << endl << "Destructor";
-		delete[] this->name;
-		Student::NO_STUDENTS -= 1;
+		delete[] this->AWB;
 	}
 
-	Student() :id(0) {
-
+	Box(const Box& box) : weight(box.weight) {
+		this->setAWB(string(box.AWB));
+		this->setState(box.state);
 	}
 
-	Student(const Student& s) :id(s.id) {
-		cout << endl << "Copy ctor";
-		this->setName(string(s.name));
-		//s.setName(this->getName());
-	}
+	void operator=(const Box& source) {
 
-	bool operator>(Student s) {
-
-	}
-
-	//static bool operator>(Student s, Student p) {
-
-	//}
-
-	void operator=(const Student& source) {
-		//source.setName(this->getName());
-
-
-		//test for self equality
 		if (&source == this) {
 			return;
 		}
 
-		//this->id = source.id;
-		delete[] this->name;
-		this->setName(string(source.name));
+		this->setAWB(string(source.AWB));
+		this->weight = source.weight;
+		this->setState(source.state);
+	}
+
+	void operator+=(int v) {
+		this->weight += v;
 	}
 };
 
-class StudentUtil {
-public:
-	static void printStudent(Student student) {
-		cout << endl << "Student data is ";
-		cout << endl << student.getName();
-	}
-
-
-	//alternatives that DON'T require the copy ctor
-	// 
-	//static void printStudent(Student& student) {
-	//	cout << endl << "Student data is ";
-	//	cout << endl << student.getName();
-	//}
-
-	//static void printStudent(Student* student) {
-	//	cout << endl << "Student data is ";
-	//	cout << endl << student->getName();
-	//}
-
-	static Student createJohnDoeStudent() {
-		Student student;
-		student.setName("John Doe");
-		//Student johnDoe(0, "John Doe");
-		return student;
-	}
-
-
-};
-
-Student createJohnDoeStudent() {
-	Student johnDoe(0, "John Doe");
-	return johnDoe;
-}
-
-int Student::NO_STUDENTS = 0;
-
-//bool operator>(Student s, Student p) {
-//
+//void operator+=(Box b, int v) {
+//	//b.weight += v;
 //}
 
-bool operator>(Student s, double average) {
-	cout << endl << s.getName();
-}
-
-
-//ONLY by global methods
-bool operator>(double average, Student s) {
-	cout << endl << s.getName();
-}
-
 int main() {
-	Student john(1, "John");
+	Box box("FAN012023", 5.6);
+	cout << endl << "Box AWB: " << box.getAWB();
+	cout << endl << "Box state: " << Util::stateToString(box.getState());
 
-	cout << endl << "Name is " << john.getName();
-
-	StudentUtil::printStudent(john);
-	Student johnDoe = createJohnDoeStudent();
-
-	Student johnClone = john;
-
-	//cout << endl << "Name is " << johnDoe.getName();
-
-	//Student test = StudentUtil::createJohnDoeStudent();
-
-	Student justAStudent(2, "Bob");
-
-	justAStudent = john;
-
-	//john = john;
-
-	if (john > johnDoe) { //operator > (Student, Student)
-		// john.operator>(johnDoe)
-
+	//TESTING THE DESTRUCTOR
+	{
+		Box box2("FAN012023", 5.6);
 	}
 
-	if (john > 9.0) { //operator > (Student, double)
+	Box* pBox = new Box("FAN012023", 5.6);
+	delete pBox;
 
-	}
+	//cout << endl << "Box AWB: " << box2.getAWB();
 
-	if (9.0 > john) { //operator > (Student, double)
+	Box box2("FAN022024", 5.6);
 
-	}
+	box = box2;
 
-	int vb = 10;
-	int result = vb + 10;
+	box += 2;	//add 2 kg to the box weight
 
-	//result = operator+(vb, 20);
-	if (vb > 5) {		//operator > (int, int)
-		cout << endl << "It's greater";
-	}
+	//box = box;
 
+	char buffer[255] = "\nasdfjkl;";
+	char* check = buffer;
+	string check2 = string(&(buffer[0]));
+	cout << buffer << " " << check << " " << check2;
 
 
 }
