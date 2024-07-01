@@ -1,90 +1,158 @@
 #include <iostream>
-#include<string>
+#include <string>
+using namespace std;
 
-char* getStringFromConsole(int maxLength);
-void printString(std::string message, const char* stringToBeDisplayed);
-char* getStringFromConsole(std::string message, int maxLength);
-bool checkAdminPassword(const char* pass, std::string dbPassword);
-
-void getBonusPoints(int* noPoints, int** points) {
-	*noPoints = 20;
-	*points = new int[*noPoints];
-	for (int i = 0; i < *noPoints; i++) {
-		(*points)[i] = i + 1;
+class Student {
+	const int id;
+	char* name;
+	static int NO_STUDENTS;
+public:
+	Student(int id, const char* name) : id(id) {
+		this->name = new char[strlen(name) + 1];
+		strcpy_s(this->name, strlen(name) + 1, name);
+		Student::NO_STUDENTS += 1;
 	}
+
+	string getName() {
+		return string(this->name);
+	}
+
+	void setName(string name) {
+		this->name = new char[name.size() + 1];
+		strcpy_s(this->name, name.size() + 1, name.c_str());
+	}
+
+	~Student() {
+		cout << endl << "Destructor";
+		delete[] this->name;
+		Student::NO_STUDENTS -= 1;
+	}
+
+	Student() :id(0) {
+
+	}
+
+	Student(const Student& s) :id(s.id) {
+		cout << endl << "Copy ctor";
+		this->setName(string(s.name));
+		//s.setName(this->getName());
+	}
+
+	bool operator>(Student s) {
+
+	}
+
+	//static bool operator>(Student s, Student p) {
+
+	//}
+
+	void operator=(const Student& source) {
+		//source.setName(this->getName());
+
+
+		//test for self equality
+		if (&source == this) {
+			return;
+		}
+
+		//this->id = source.id;
+		delete[] this->name;
+		this->setName(string(source.name));
+	}
+};
+
+class StudentUtil {
+public:
+	static void printStudent(Student student) {
+		cout << endl << "Student data is ";
+		cout << endl << student.getName();
+	}
+
+
+	//alternatives that DON'T require the copy ctor
+	// 
+	//static void printStudent(Student& student) {
+	//	cout << endl << "Student data is ";
+	//	cout << endl << student.getName();
+	//}
+
+	//static void printStudent(Student* student) {
+	//	cout << endl << "Student data is ";
+	//	cout << endl << student->getName();
+	//}
+
+	static Student createJohnDoeStudent() {
+		Student student;
+		student.setName("John Doe");
+		//Student johnDoe(0, "John Doe");
+		return student;
+	}
+
+
+};
+
+Student createJohnDoeStudent() {
+	Student johnDoe(0, "John Doe");
+	return johnDoe;
 }
 
-void getBonusPointsWithReference(int& noPoints, int*& points) {
-	noPoints = 20;
-	points = new int[noPoints];
-	for (int i = 0; i < noPoints; i++) {
-		points[i] = i + 1;
-	}
+int Student::NO_STUDENTS = 0;
+
+//bool operator>(Student s, Student p) {
+//
+//}
+
+bool operator>(Student s, double average) {
+	cout << endl << s.getName();
+}
+
+
+//ONLY by global methods
+bool operator>(double average, Student s) {
+	cout << endl << s.getName();
 }
 
 int main() {
+	Student john(1, "John");
 
-	char username[20];
-	char* password = nullptr;
+	cout << endl << "Name is " << john.getName();
 
-	//username = getStringFromConsole(20);
-	strcpy_s(username, 20, getStringFromConsole("Username:", 20));
+	StudentUtil::printStudent(john);
+	Student johnDoe = createJohnDoeStudent();
 
-	//char* temp = getStringFromConsole(20);
-	//strcpy_s(username, 20, temp);
+	Student johnClone = john;
 
-	printString("Username is: ", username);
+	//cout << endl << "Name is " << johnDoe.getName();
 
-	//password = getStringFromConsole("Password:", 100);
-	//printString("Password is: ", password);
+	//Student test = StudentUtil::createJohnDoeStudent();
 
-	////avoid memory leak
-	//delete[] password;
-	password = getStringFromConsole("Password:", 100);
-	printString("Password is: ", password);
+	Student justAStudent(2, "Bob");
 
-	if (checkAdminPassword(password, "root1234")) {
-		std::cout << std::endl << "Hello admin !";
-	}
-	else {
-		std::cout << std::endl << "Wrong admin pass !";
+	justAStudent = john;
+
+	//john = john;
+
+	if (john > johnDoe) { //operator > (Student, Student)
+		// john.operator>(johnDoe)
+
 	}
 
-}
+	if (john > 9.0) { //operator > (Student, double)
 
-bool checkAdminPassword(const char* pass, std::string dbPassword) {
-	if (strcmp(pass, dbPassword.c_str()) == 0) {
-		return true;
 	}
-	else {
-		return false;
+
+	if (9.0 > john) { //operator > (Student, double)
+
 	}
-}
 
-char* getStringFromConsole(int maxLength) {
-	std::cout << std::endl << "Your input is: ";
+	int vb = 10;
+	int result = vb + 10;
 
-	//DON'T DO IT
-	//char buffer[1000];
+	//result = operator+(vb, 20);
+	if (vb > 5) {		//operator > (int, int)
+		cout << endl << "It's greater";
+	}
 
-	char* newString = new char[maxLength];
-	std::cin >> newString;
 
-	//DON'T DO IT
-	//return buffer;
 
-	return newString;
-}
-
-char* getStringFromConsole(std::string message, int maxLength) {
-	std::cout << std::endl << message;
-
-	char* newString = new char[maxLength];
-	std::cin >> newString;
-
-	return newString;
-}
-
-void printString(std::string message, const char* stringToBeDisplayed) {
-	std::cout << std::endl << message << stringToBeDisplayed;
 }

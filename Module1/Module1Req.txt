@@ -1,0 +1,16 @@
+Modul 1 – citire consola, primitive si vectori definiti static
+
+1.	Program afisare mesaj (orice mesaj) la consola cu printf() si cout 
+2.	Program afisare mesaj de tipul ("Introduceti valoare:") si apoi citire valoare intr-o variabila de tip int, char, float si double. 
+Pentru fiecare tip de data, citirea se face cu printf si apoi cu cin >>. Dupa citire valoarea se afiseaza la consola
+3.	Program citire 2 valori int de la consola si determinare minim
+4.	Program citire 2 valori int de la consola si determinare maxim
+5.	Program citire 2 valori int de la consola si determinare suma
+6.	Program ce defineste un vector de valori numerice, initializate cu 1 si apoi afisare
+7.	Program citire valori vector definit static (int vector[50]) de la consola si apoi afisare
+8.	Program citire valori vector definit static de la consola si apoi determinare suma, medie, minim si maxim
+9.	Program citire valori vector definit static de la consola si apoi determinare si afisare valori mai mari ca 25
+10.	Program citire valori vector definit static de la consola si apoi determinare si afisare valori mai mari ca o valoare 
+citita de la consola.
+
+Fiecare program se creeaza intr-un proiect C/C++ nou iar solutia se implementeaza in main() //lolno

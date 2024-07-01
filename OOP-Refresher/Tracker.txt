@@ -4,8 +4,8 @@ Structura materiei
 1x    Utilizare mediu de lucru, compilare, depanare, corectie erori de compilare, identificare si corectie bug-uri
 2x    Recapitulare pointeri, masive unidimensionale (vectori si siruri de caractere)
 3x    Recapitulare transfer parametri catre functii. Transfer parametri prin valoare sau prin adresa. Pointer vs Referinta C++
-4    Clase, specificatori de acces, incapsulare, atribute, metode, atribute statice, atribute constante
-5    Constructori, Destructor;
+4x    Clase, specificatori de acces, incapsulare, atribute, metode, atribute statice, atribute constante
+5x    Constructori, Destructor;
 6    Constructor copiere, supraincarcare operator =;
 7    Supraincarcare operatori (<<, >>, +, -, *, /, ++, --);
 8    Supraincarcare operatori (+=, [], ( ), !, ->, new, delete, cast);

@@ -1,0 +1,43 @@
+Modul 2 – functii
+
+Pentru fiecare cerinta sa se implementeze o functie. Functiile se testeaza fiind apelate in main().
+1.	Functie afisare mesaj (orice mesaj) primit ca parametru, la consola 
+
+void afisareMesaj(char* mesaj);
+void afisareMesaj2(char mesaj[50]);
+
+2.	Functie afisare mesaj de tipul ("Introduceti valoare:") si apoi citire valoare intr-o variabila de tip int, char, float si double. Pentru fiecare tip de data, citirea se face cu printf sau cu cin >>. Dupa citire valoarea se returneaza in programul principal si se afiseaza
+
+Exemplu pentru int. Aceste 2 metode se implementeaza pentru toate tipurile
+
+int citireValoare();
+void citireValoarePrinPointer(int* pointerValoare)
+void citireValoarePrinReferinta(int& referintaValoare)
+
+3.	Functie ce primeste 2 valori int ca parametru si determina minim
+
+int minim(int a, int b);
+
+4.	Functie  ce citeste 2 valori int de la consola si determinare maxim
+
+void maxim();
+
+5.	Functie ce primeste un vector de valori numerice si il afiseaza
+
+void afisareVector(int* vector, int n)
+6.	Functie ce primeste un vector de valori numerice, si determina suma elementelor
+
+void sumaVector(int* vector, int n)
+void sumaVector2(int[] vector, int n)
+
+7.	Functie citire valori vector definit static (int vector[50]) si dinamic (int * vector) de la consola
+
+* se lasa libertatea definirii propriilor metode pentru cele 2 cazuri
+** vectorul se afiseaza in programul principal prin apelul functiei de la punctul 5
+
+8.	Functie ce primeste un vector si apoi determina si afiseaza valorile mai mari ca o limita data
+
+void determinaNumereMari(int* vecor, int n, int limita)
+
+9.	Functie ce primeste un  vector si apoi determina intr-un vector nou valorile mai mari ca o limita data
+int* determinaVectorNumereMari(int* vectorInitial, int n, int limita, int* dimensiuneVectorNou)
