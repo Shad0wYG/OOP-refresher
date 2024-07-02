@@ -20,11 +20,6 @@ private:
 
 public:
 
-	/*ProdusAlimentar() {
-		char denum[] = "denumire1";
-		this->denumire = denum;
-	}*/
-
 
 #pragma region Getters
 	float getPret() {
@@ -83,19 +78,41 @@ public:
 		if (weight > 0) this->greutate = weight;
 	}
 	void setDenumire(char* name) {
-
+		if (strlen(name) < 1) this->denumire = nullptr;
+		else
+		{
+			char* ret = new char[strlen(name) + 1];
+			strcpy(ret, name);
+			this->denumire = ret;
+		}
 	}
 	void setCategorie(char* cat) {
-
+		if (strlen(cat) <= 100 && strlen(cat) > 0) {
+			strcpy(this->categorie, cat);
+		}
+		else strcpy(this->categorie, "-");
 	}
-	void setStocuriMagazine(int num) {
-
+	void setStocuriMagazine(int* num, int nrMag) {
+		if (nrMag > 0 && nrMag <= 50)
+		{
+			this->nrMagazine = nrMag;
+			memcpy(this->stocuriMagazine, num, sizeof(int) * nrMag);
+		}
+		else memcpy(this->stocuriMagazine, 0, sizeof(int) * 1);
 	}
 	void setNrMagazine(int nr) {
 		if (nr > 0) this->nrMagazine = nr;
 	}
-	void setVanzariPeZile(int nrDays, int* vect) {
-
+	void setVanzariPeZile(int* vect, int nrDays) {
+		if (nrDays > 0) {
+			this->nrZile = nrDays;
+			this->vanzariPeZile = new int[nrDays];
+			memcpy(this->vanzariPeZile, vect, sizeof(int) * nrDays);
+		}
+		else {
+			this->nrZile = 0;
+			this->vanzariPeZile = nullptr;
+		}
 	}
 	void setNrZile(int nrD) {
 		if (nrD > 1) this->nrZile = nrD;
@@ -106,4 +123,49 @@ public:
 #pragma endregion
 
 
+	void printProdus() {
+		printf("\nDenumire: %s\nCategorie: %s\nPret: %f\nGreutate: %d", this->getDenumire(),this->getCategorie(), this->getPret(), this->getGreutate());
+		printf("\nNumar de magazine: %d\nStocuri: ", this->getMagazine());
+		for (int i = 0; i < this->getMagazine(); i++) 
+			cout << this->getStocuri()[i] << " ";
+
+		printf("\nNumar de zile: %d\nVanzari pe zile: ", this->getZile());
+		for (int i = 0; i < this->getZile(); i++)
+			cout << this->getVanzariPeZile()[i] << " ";
+	}
+
+#pragma region Constructors/Destructors
+
+	ProdusAlimentar(float Pret, int Greutate, char* Denumire, char* Categorie, int* Stocuri, int NrMag, int* Vanzari, int NrZile):
+		pret(Pret), greutate(Greutate) 
+	{
+		setDenumire(Denumire);
+		setCategorie(Categorie);
+		setStocuriMagazine(Stocuri, NrMag);
+		setVanzariPeZile(Vanzari, NrZile);
+
+	}
+
+	ProdusAlimentar() {}
+
+
+	~ProdusAlimentar() {
+		cout << "\nDestructor on " << this->getDenumire() << ", pret: " << this->getPret();
+		delete this->denumire;
+		delete this->vanzariPeZile;
+	}
+
+	
+	ProdusAlimentar(ProdusAlimentar& prod) {
+		cout << "\n Copy ctor called with object " << prod.denumire << " , price: " << prod.pret;
+		this->setCategorie(prod.categorie);
+		this->setDenumire(prod.denumire);
+		this->setGreutate(prod.greutate);
+		this->setPret(prod.pret);
+		this->setStocuriMagazine(prod.stocuriMagazine, prod.nrMagazine);
+		this->setVanzariPeZile(prod.vanzariPeZile, prod.nrZile);
+	}
+
+
+#pragma endregion
 };

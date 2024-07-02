@@ -1,3 +1,5 @@
+Note: Nu mi pasa de cerintele 4-8 pt ca sunt repetitive, in schimb vreau sa pun ca cerinta in plus sa se scrie fiecare operator invatat pt aceasta clasa.
+
 Modul 3 – clase, constructori si siruri de caractere
 
 Pentru clasa sa se implementeze urmatoarele cerinte
@@ -14,12 +16,12 @@ private:
 	int nrZile;
 }
 	
-1. Sa se defineasca functii set si get pentru toate atributele. Functiile setter valideaza valoare de intrare: pentru
+1.x Sa se defineasca functii set si get pentru toate atributele. Functiile setter valideaza valoare de intrare: pentru
 vectori se verifica daca acesta exista iar pentru valori primitive se alege orice regula.
 
-2. Sa se implementeze metoda afisareProdus() ce afiseaza la consola toate detaliile produsului
+2.x Sa se implementeze metoda afisareProdus() ce afiseaza la consola toate detaliile produsului
 
-3. Sa se implementeze constructorul care primeste parametrii pentru toate atributele
+3.x Sa se implementeze constructorul care primeste parametrii pentru toate atributele
 
 4. Sa se implementeze constructorul care NU primeste ca parametru vanzarile pe zile
 int[50] stocuri;
@@ -35,8 +37,8 @@ ProdusAlimentar(23.5, 10, ”Malai”,”Alimentar”, stocuri, nrStocuri)
 
 8. Sa se implementeze constructorul care primeste ca parametru DOAR  denumirea si categoria
 
-9. Sa se implementeze destructorul clasei (obligatoriu elibereaza spatiul de memorie pentru vectorii alocati dinamic)
+9.x Sa se implementeze destructorul clasei (obligatoriu elibereaza spatiul de memorie pentru vectorii alocati dinamic)
 
-10. Sa se implementeze constructorul de copiere al clasei.
+10.x Sa se implementeze constructorul de copiere al clasei.
 
 Constructorii se testeaza in main si dupa fiecare constructie obiectul se afiseaza cu metoda afisareProdus ()
