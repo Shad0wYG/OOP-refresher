@@ -90,32 +90,9 @@ public:
 //}
 
 int main() {
-	Box box("FAN012023", 5.6);
-	cout << endl << "Box AWB: " << box.getAWB();
-	cout << endl << "Box state: " << Util::stateToString(box.getState());
-
-	//TESTING THE DESTRUCTOR
-	{
-		Box box2("FAN012023", 5.6);
-	}
-
-	Box* pBox = new Box("FAN012023", 5.6);
-	delete pBox;
-
-	//cout << endl << "Box AWB: " << box2.getAWB();
-
-	Box box2("FAN022024", 5.6);
-
-	box = box2;
-
-	box += 2;	//add 2 kg to the box weight
-
-	//box = box;
-
-	char buffer[255] = "\nasdfjkl;";
-	char* check = buffer;
-	string check2 = string(&(buffer[0]));
-	cout << buffer << " " << check << " " << check2;
+	int a = 3, b = 5;
+	int c;
+	c = a + b;
 
 
 }

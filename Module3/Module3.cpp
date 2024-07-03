@@ -43,8 +43,6 @@ int main() {
 
 	cout << "\n---------Constructor with parameters tested--------------\n\n";
 
-	/*ProdusAlimentar empty;
-	empty.printProdus();*/
 
 	ProdusAlimentar Empty = produscuparametrii;
 	Empty.printProdus();
@@ -55,5 +53,61 @@ int main() {
 	produscuparametrii.printProdus();
 
 	cout << "\n---------Copy constructor tested--------------\n\n";
+
+	/*ProdusAlimentar opeq;
+	opeq = prod;
+	opeq.printProdus();
+
+	cout << "\n---------Operator= tested--------------\n\n";*/
+
+	/*cout << opeq;
+	cout << "\n---------Operator<< tested--------------\n\n";*/
+
+	/*cin >> opeq;
+	cout << opeq;
+
+	cout << "\n---------Operator>> tested--------------\n\n";*/
+
+	//ProdusAlimentar readable, hold;
+	//cin >> readable;
+	//readable = produscuparametrii;
+
+	//hold = readable + prod;
+	//readable.printProdus();
+	//cout << "\n";
+	//prod.printProdus();
+	//cout << "\n";
+	//hold.printProdus();
+
+	//cout << "\n---------Operator + tested--------------\n\n";
+
+	/*ProdusAlimentar p;
+	cin >> p;
+	cout << "The third day of sales has a value of: " << p[2];
+
+	cout << "\n---------Operator[] tested--------------\n\n";*/
+
+	float x = prod; //(float)prod if explicit cast operator
+	cout << x;
+
+	cout << "\n--------- Cast operator tested--------------\n\n";
+
+	ProdusAlimentar holdthis;
+	holdthis = ++produscuparametrii; //feel free to change ++ to be prefix/postfix, both are implemented (:
+	cout <<"\n"<< holdthis;
+	cout << "\n" << produscuparametrii;
+
+	cout << "\n---------Operator++ tested--------------\n\n";
+
+
+	ProdusAlimentar noVanzari;
+	if (!noVanzari) {
+		cout << "No sales";
+	}
+	else cout << "Has sales";
+
+
+	cout << "\n---------Operator! tested--------------\n\n";
+
 
 }
