@@ -14,6 +14,7 @@ private:
 	double attributeThatDoesntMatter = 1;
 
 public:
+
 	void setNoMem(int n) {
 		if (n > 0) this->noMembers = n;
 	}
@@ -67,6 +68,8 @@ public:
 		strcpy(this->teamName, name);
 	}
 
+
+
 	~Team() {
 		cout << "\nDestructor on " << this->teamName;
 		//if (this->memberNames != nullptr) 
@@ -75,6 +78,13 @@ public:
 			delete[] this->memberHeights;
 	}
 
+	//Wtf is that below me Scoob
+	Team(Team& t): attributeThatDoesntMatter(t.attributeThatDoesntMatter), noMembers(t.noMembers) {
+		cout << "\nCopy Ctor";
+		strcpy(this->teamName, t.teamName);
+		this->setHeights(t.getHeights());
+		this->setNames(t.getNames());
+	}
 
 	void operator *=(int x) {
 		this->attributeThatDoesntMatter *= x;
@@ -87,6 +97,21 @@ public:
 			printf("\nYes, %s is indeed the member on position %d", this->getNames()[pos].c_str(), pos + 1);
 		}
 		else printf("\nNo, the name on position %d is %s", pos + 1, this->getNames()[pos].c_str());
+	}
+
+	void operator=(Team& rightOp) {
+		//strcpy(this->teamName, rightOp.teamName);
+		this->noMembers = rightOp.noMembers;
+		this->attributeThatDoesntMatter = rightOp.attributeThatDoesntMatter;
+		if (this->memberHeights) delete[] this->memberHeights;
+		if (this->memberNames) delete[] this->memberNames;
+		this->memberHeights = new float[this->noMembers];
+		this->memberNames = new string[this->noMembers];
+		for (int i = 0; i < this->noMembers; i++) {
+			this->memberHeights[i] = rightOp.memberHeights[i];
+			this->memberNames[i] = rightOp.memberNames[i];
+		}
+
 	}
 
 };
