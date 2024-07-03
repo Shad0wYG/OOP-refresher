@@ -1,0 +1,18 @@
+(3p) It is considered an application used to manage the team structure based on the team members roles, etc. 
+Specific attributes will be covered, such as: team name, coordinator name, number of team members, members names list, etc. 
+Member data is private or protected. The class contains at least three fields,of which one is dynamically allocated (e.g. names list as an array of strings),
+a parameter constructor, destructor, accessory methods (get and set) for one of the attributes. Use a constant member . The set () method validates the input data.
+
+(1p) Overload the operator - =, to change the value of an attribute by multiplication.
+
+(1p) Overload the function operator, in the form (string value, int index) to verify if the received value is the name of a team member on the index position.
+
+(2p) Exemplify the concept of an "is a" relation by defining a class that manages an upgrade of the previous configuration. Test the solution in the main ().
+
+(2p) Exemplify the concept of working in C ++ with binary files (read and write) to save and restore the value of an object (for one of the defined classes).
+
+(1p) Explain and exemplify the polymorphism concept in C++.
+
+The ex officio/bonus/free point is included in the first requirement. Failure to implement any of the requirements will result in the exam being graded with 1.  
+In order to be considered, the solutions must not contain compilation errors.The implementation of the solution must be accompanied by a description of the concepts used.
+All requirements must be tested in main()

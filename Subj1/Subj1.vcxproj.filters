@@ -25,7 +25,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="MainSubj1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
